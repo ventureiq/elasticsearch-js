@@ -36,6 +36,9 @@ export default class SniffingTransport extends Transport {
         this.isSniffing = false
         const protocol = result.meta.connection?.url.protocol ?? /* istanbul ignore next */ 'http:'
         const hosts = this.connectionPool.nodesToHost(result.body.nodes, protocol)
+        if (opts?.context?.requestTimeout !== undefined && Array.isArray(hosts)) {
+          hosts.forEach((host) => { host.timeout = opts.context.requestTimeout })
+        }
         this.connectionPool.update(hosts)
 
         result.meta.sniff = { hosts, reason: opts.reason }
