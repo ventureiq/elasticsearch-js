@@ -1,5 +1,5 @@
 {
-  "name": "@elastic/elasticsearch",
+  "name": "@ventureiq/elasticsearch",
   "version": "8.17.1p1",
   "versionCanary": "8.17.1-canary.0",
   "description": "The official Elasticsearch client for Node.js",
